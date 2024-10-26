@@ -1,0 +1,116 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="61B599F4-E1F5-C2EF-BB95-74DCD580B517" name="order">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 10:31:48 UTC</createdTime>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<ordsAlias>table_8</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="order_code" id="DDB07552-9D3B-1561-2CCE-5DB9BFA19710">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 10:32:35 UTC</createdTime>
+<commentInRDBMS><![CDATA[주문코드]]></commentInRDBMS>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="quantity" id="E7FEC880-31B3-ED1C-7990-27DD2B0F4212">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 10:34:51 UTC</createdTime>
+<commentInRDBMS><![CDATA[주문수량]]></commentInRDBMS>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>10</dataTypePrecision>
+<ownDataTypeParameters>,10,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="order_date" id="B30418A2-0916-A5E8-12CD-5EA9EDCBDDAE">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 10:41:15 UTC</createdTime>
+<commentInRDBMS><![CDATA[주문일자
+기본값 : sysdate]]></commentInRDBMS>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="customer_code" id="49EDD0F9-B69C-A580-87B3-B1B0D627418F">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 10:43:40 UTC</createdTime>
+<commentInRDBMS><![CDATA[고객코드
+참조키]]></commentInRDBMS>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="CFE1E32A-FAB6-5EA9-8912-4F97A21F5D33" referredColumn="B1E63C2A-712C-305D-978A-F40D82CB21A1"/>
+</associations>
+</Column>
+<Column name="product_code" id="686F35A2-1E41-1D7F-9974-6B5442D26D72">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 10:47:50 UTC</createdTime>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="D86F983D-7959-EAE9-BA13-08713ECE24DC" referredColumn="ED899E80-93F9-4D23-2C7C-1458E83A2625"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="92BABFCB-FF98-6CDA-2EF3-A13FFE793CD9" name="order_pk">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 10:32:35 UTC</createdTime>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DDB07552-9D3B-1561-2CCE-5DB9BFA19710"/>
+<colUsage columnID="49EDD0F9-B69C-A580-87B3-B1B0D627418F"/>
+<colUsage columnID="686F35A2-1E41-1D7F-9974-6B5442D26D72"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="FCD7FFF7-7B89-1B7A-CB8B-5EB7E50A5283" name="customer_order_fk">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 10:43:40 UTC</createdTime>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="49EDD0F9-B69C-A580-87B3-B1B0D627418F"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="524857B0-8F5E-9854-D454-110ECE6D0F5F" name="order_product_fk">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 10:47:50 UTC</createdTime>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="686F35A2-1E41-1D7F-9974-6B5442D26D72"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,124 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="59517D8F-893C-AEC2-5FDD-B5BDD4E5FD44" name="customer">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 09:48:33 UTC</createdTime>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<ordsAlias>table_3</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="customer_code" id="B1E63C2A-712C-305D-978A-F40D82CB21A1">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 09:49:23 UTC</createdTime>
+<commentInRDBMS><![CDATA[고객코드]]></commentInRDBMS>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="customer_name" id="C5E80699-8C41-37F7-0350-DE4360D32515">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 09:50:22 UTC</createdTime>
+<commentInRDBMS><![CDATA[고객이름]]></commentInRDBMS>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="phone_number" id="89F37F5D-F4DB-0565-16BF-231739EE72C1">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 09:52:43 UTC</createdTime>
+<commentInRDBMS><![CDATA[전화번호]]></commentInRDBMS>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20 CHAR</dataTypeSize>
+<ownDataTypeParameters>20 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="email" id="B5A83417-9126-0A11-456B-17D33173DD52">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 09:53:24 UTC</createdTime>
+<commentInRDBMS><![CDATA[이메일]]></commentInRDBMS>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="address" id="1D58EDF8-6C11-1F06-207B-C2EED23CC50F">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 09:54:08 UTC</createdTime>
+<commentInRDBMS><![CDATA[주소]]></commentInRDBMS>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="regist_date" id="8B968956-38A4-F60A-18A2-4F543027ADD1">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 09:54:35 UTC</createdTime>
+<commentInRDBMS><![CDATA[가입일]]></commentInRDBMS>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT007</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="region_code" id="3A53CDC0-A90A-E518-5DC8-69CF353A051A">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 10:00:29 UTC</createdTime>
+<commentInRDBMS><![CDATA[지역코드(외래키)]]></commentInRDBMS>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>3 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="4D662108-49CA-63D9-4BEE-CD095FBB910E" referredColumn="2465347D-8C79-1ADA-3014-1E990C849A88"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D7D9583E-0E30-DEAC-822F-26386716195C" name="customer_pk">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 09:49:23 UTC</createdTime>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="B1E63C2A-712C-305D-978A-F40D82CB21A1"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="5036637D-6BD6-A1A6-E74B-0A24556B631E" name="region_customer_fk">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 10:00:29 UTC</createdTime>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="3A53CDC0-A90A-E518-5DC8-69CF353A051A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

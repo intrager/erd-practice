@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="physical_modeling" id="E922D380-194B-96BF-3DE4-4DED8B91DF18" version="3.5">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 09:35:27 UTC</createdTime>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>E922D380-194B-96BF-3DE4-4DED8B91DF18</designId>
+</OSDM_Design>
