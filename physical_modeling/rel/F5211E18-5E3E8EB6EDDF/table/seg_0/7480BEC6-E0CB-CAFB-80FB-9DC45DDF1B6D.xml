@@ -1,0 +1,48 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="7480BEC6-E0CB-CAFB-80FB-9DC45DDF1B6D" name="region">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 09:39:41 UTC</createdTime>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<ordsAlias>table_1</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="region_code" id="2465347D-8C79-1ADA-3014-1E990C849A88">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 09:41:56 UTC</createdTime>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>3 CHAR</dataTypeSize>
+<ownDataTypeParameters>3 CHAR,,</ownDataTypeParameters>
+<abbreviation>rc</abbreviation>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="region_name" id="ED8F717B-EFFD-F292-D581-21C21994D35A">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 09:48:07 UTC</createdTime>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>10 CHAR</dataTypeSize>
+<ownDataTypeParameters>10 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="51A57DFC-7FBD-0C67-0D14-56E75BF870D2" name="region_pk">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 09:47:37 UTC</createdTime>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="2465347D-8C79-1ADA-3014-1E990C849A88"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

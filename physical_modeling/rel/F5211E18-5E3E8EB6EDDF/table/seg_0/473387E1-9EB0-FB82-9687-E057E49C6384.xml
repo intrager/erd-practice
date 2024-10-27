@@ -1,0 +1,63 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="473387E1-9EB0-FB82-9687-E057E49C6384" name="product">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 10:10:38 UTC</createdTime>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<ordsAlias>table_6</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="product_code" id="ED899E80-93F9-4D23-2C7C-1458E83A2625">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 10:25:46 UTC</createdTime>
+<commentInRDBMS><![CDATA[제품코드]]></commentInRDBMS>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="product_name" id="C44BF4F2-878F-600C-1E9C-81B6E19C7629">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 10:27:45 UTC</createdTime>
+<commentInRDBMS><![CDATA[제품이름]]></commentInRDBMS>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="price" id="5AF9F96E-2BA7-944E-7890-A1F0B4DE4861">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 10:30:36 UTC</createdTime>
+<commentInRDBMS><![CDATA[가격]]></commentInRDBMS>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>17</dataTypePrecision>
+<dataTypeScale>3</dataTypeScale>
+<ownDataTypeParameters>,17,3</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="D10D8195-251B-0738-3130-7EB25684C500" name="product_pk">
+<createdBy>intra</createdBy>
+<createdTime>2024-10-26 10:25:46 UTC</createdTime>
+<ownerDesignName>physical_modeling</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="ED899E80-93F9-4D23-2C7C-1458E83A2625"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
