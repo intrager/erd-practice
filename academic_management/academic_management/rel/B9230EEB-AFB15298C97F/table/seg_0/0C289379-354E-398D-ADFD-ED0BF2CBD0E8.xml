@@ -1,0 +1,49 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="0C289379-354E-398D-ADFD-ED0BF2CBD0E8" name="department">
+<createdBy>intra</createdBy>
+<createdTime>2024-11-16 09:58:45 UTC</createdTime>
+<ownerDesignName>academic_management</ownerDesignName>
+<ordsAlias>table_1</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="department_code" id="D4146E4E-D7E6-2DF6-F9AD-CBD03A22D455">
+<createdBy>intra</createdBy>
+<createdTime>2024-11-16 10:05:59 UTC</createdTime>
+<commentInRDBMS><![CDATA[학과코드]]></commentInRDBMS>
+<ownerDesignName>academic_management</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="department_name" id="EFDB4142-CE4D-2CC6-9D17-5B810FEB9A9A">
+<createdBy>intra</createdBy>
+<createdTime>2024-11-16 10:06:38 UTC</createdTime>
+<commentInRDBMS><![CDATA[학과이름]]></commentInRDBMS>
+<ownerDesignName>academic_management</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>30 CHAR</dataTypeSize>
+<ownDataTypeParameters>30 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="AB774013-586C-7BE4-122C-FEC1FC667DA9" name="department_PK">
+<createdBy>intra</createdBy>
+<createdTime>2024-11-16 10:05:59 UTC</createdTime>
+<ownerDesignName>academic_management</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="D4146E4E-D7E6-2DF6-F9AD-CBD03A22D455"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>
