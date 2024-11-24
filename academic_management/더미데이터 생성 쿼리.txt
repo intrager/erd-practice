@@ -1,0 +1,75 @@
+insert into department
+select '2024DEPTA1', '컴퓨터소프트웨어' from dual
+union
+select '2024DEPTA2', '컴퓨터전자' from dual
+union
+select '2024DEPTA3', '정보통신공학' from dual
+union
+select '2024DEPTA4', '산업경영공학' from dual;
+
+        commit;
+        
+insert into professor
+select '20241116PROA1', '가교수', '2024DEPTA1' from dual
+union
+select '20241116PROA2', '나교수', '2024DEPTA1' from dual
+union
+select '20241116PROA3', '다교수', '2024DEPTA2' from dual
+union
+select '20241116PROA4', '라교수', '2024DEPTA3' from dual
+union
+select '20241116PROA5', '마교수', '2024DEPTA4' from dual;
+
+
+insert into student
+select '2024STUDENTA1', '김학생', '2024DEPTA1' from dual
+union
+select '2024STUDENTA2', '이학생', '2024DEPTA2' from dual
+union
+select '2024STUDENTA3', '박학생', '2024DEPTA3' from dual
+union
+select '2024STUDENTA4', '최학생', '2024DEPTA4' from dual
+union
+select '2024STUDENTA5', '한학생', '2024DEPTA1' from dual;
+
+insert into subject
+select '2024SUBJECTA1', '전자계산기구조', sysdate, to_date(sysdate + 105), '20241116PROA1' from dual
+union
+select '2024SUBJECTA2', '공학수학', sysdate, to_date(sysdate + 105), '20241116PROA2' from dual
+union
+select '2024SUBJECTA3', '프로그래밍 기초', sysdate, to_date(sysdate + 105), '20241116PROA3' from dual
+union
+select '2024SUBJECTA4', '자료구조', sysdate, to_date(sysdate + 105), '20241116PROA4' from dual
+union
+select '2024SUBJECTA5', '소프트웨어 설계', sysdate, to_date(sysdate + 105), '20241116PROA5' from dual
+union
+select '2024SUBJECTA6', '소프트웨어학 개론', sysdate, to_date(sysdate + 105), '20241116PROA4' from dual
+union
+select '2024SUBJECTA7', '기초프로그래밍 실습', sysdate, to_date(sysdate + 105), '20241116PROA3' from dual
+union
+select '2024SUBJECTA8', '하드웨어 기초 개론', sysdate, to_date(sysdate + 105), '20241116PROA2'from dual
+;
+
+insert into course
+select '20241116COURSEA1', '2024STUDENTA1', '2024SUBJECTA1' from dual
+union
+select '20241116COURSEA2', '2024STUDENTA2', '2024SUBJECTA2' from dual
+union
+select '20241116COURSEA3', '2024STUDENTA3', '2024SUBJECTA3' from dual
+union
+select '20241116COURSEA4', '2024STUDENTA4', '2024SUBJECTA4' from dual
+union
+select '20241116COURSEA5', '2024STUDENTA5', '2024SUBJECTA5' from dual
+union
+select '20241116COURSEA6', '2024STUDENTA1', '2024SUBJECTA6' from dual
+union
+select '20241116COURSEA7', '2024STUDENTA2', '2024SUBJECTA7' from dual
+union
+select '20241116COURSEA8', '2024STUDENTA3', '2024SUBJECTA8' from dual
+union
+select '20241116COURSEA9', '2024STUDENTA4', '2024SUBJECTA1' from dual
+;
+
+
+select * from course;
+commit;

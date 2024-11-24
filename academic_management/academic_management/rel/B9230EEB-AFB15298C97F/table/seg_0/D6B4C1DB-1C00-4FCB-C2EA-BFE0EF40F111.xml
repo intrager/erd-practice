@@ -1,0 +1,87 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="D6B4C1DB-1C00-4FCB-C2EA-BFE0EF40F111" name="course">
+<createdBy>intra</createdBy>
+<createdTime>2024-11-16 10:24:06 UTC</createdTime>
+<ownerDesignName>academic_management</ownerDesignName>
+<ordsAlias>table_7</ordsAlias>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="course_code" id="60C5FF05-2BAE-CF3D-191A-902F908F78B5">
+<createdBy>intra</createdBy>
+<createdTime>2024-11-16 10:24:54 UTC</createdTime>
+<ownerDesignName>academic_management</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>50 CHAR,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="student_code" id="58A9E1DF-421C-E178-0F48-E346DB5B96B0">
+<createdBy>intra</createdBy>
+<createdTime>2024-11-16 10:29:42 UTC</createdTime>
+<ownerDesignName>academic_management</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="EB7BBB19-41F2-BD73-EF53-F6AD9CA0ED8E" referredColumn="06A95833-767B-CE52-3664-71D20C89853B"/>
+</associations>
+</Column>
+<Column name="subject_code" id="4FFA16DB-27EB-EB0E-A4B4-AC7A79AABF08">
+<createdBy>intra</createdBy>
+<createdTime>2024-11-16 10:30:19 UTC</createdTime>
+<ownerDesignName>academic_management</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50 CHAR</dataTypeSize>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="574C0611-FFBC-114F-AC3A-D2211E11D2AE" referredColumn="8445E086-B4C1-38C7-084F-332ACBE54EE5"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="F61AD014-8417-4FF7-F2AF-D030C1F9C628" name="course_PK">
+<createdBy>intra</createdBy>
+<createdTime>2024-11-16 10:30:49 UTC</createdTime>
+<ownerDesignName>academic_management</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="58A9E1DF-421C-E178-0F48-E346DB5B96B0"/>
+<colUsage columnID="4FFA16DB-27EB-EB0E-A4B4-AC7A79AABF08"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="6D984063-8ADA-22C1-E1E4-1D642D73F14E" name="course_student_fk">
+<createdBy>intra</createdBy>
+<createdTime>2024-11-16 10:29:42 UTC</createdTime>
+<ownerDesignName>academic_management</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="58A9E1DF-421C-E178-0F48-E346DB5B96B0"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="47EE22B0-96C0-285B-1BD0-DC0EAA10673A" name="course_subject_fk">
+<createdBy>intra</createdBy>
+<createdTime>2024-11-16 10:30:19 UTC</createdTime>
+<ownerDesignName>academic_management</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="4FFA16DB-27EB-EB0E-A4B4-AC7A79AABF08"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

@@ -1,0 +1,94 @@
+CREATE TABLE course (
+    course_code   VARCHAR2(50 CHAR) NOT NULL,
+    student_code  VARCHAR2(50 CHAR) NOT NULL,
+    subject_code  VARCHAR2(50 CHAR) NOT NULL
+);
+
+ALTER TABLE course ADD CONSTRAINT course_pk PRIMARY KEY ( student_code,
+                                                          subject_code );
+
+CREATE TABLE department (
+    department_code  VARCHAR2(50 CHAR) NOT NULL,
+    department_name  VARCHAR2(30 CHAR) NOT NULL
+);
+
+COMMENT ON COLUMN department.department_code IS
+    '학과코드';
+
+COMMENT ON COLUMN department.department_name IS
+    '학과이름';
+
+ALTER TABLE department ADD CONSTRAINT department_pk PRIMARY KEY ( department_code );
+
+CREATE TABLE professor (
+    professor_code   VARCHAR2(50 CHAR) NOT NULL,
+    professor_name   VARCHAR2(30 CHAR) NOT NULL,
+    department_code  VARCHAR2(50 CHAR) NOT NULL
+);
+
+COMMENT ON COLUMN professor.professor_code IS
+    '교수코드';
+
+COMMENT ON COLUMN professor.professor_name IS
+    '교수이름';
+
+ALTER TABLE professor ADD CONSTRAINT professor_pk PRIMARY KEY ( professor_code );
+
+CREATE TABLE subject (
+    subject_code    VARCHAR2(50 CHAR) NOT NULL,
+    subject_name    VARCHAR2(30 CHAR) NOT NULL,
+    start_date      DATE NOT NULL,
+    end_date        DATE NOT NULL,
+    professor_code  VARCHAR2(50 CHAR) NOT NULL
+);
+
+COMMENT ON COLUMN subject.subject_code IS
+    '과목코드';
+
+COMMENT ON COLUMN subject.subject_name IS
+    '과목이름';
+
+COMMENT ON COLUMN subject.start_date IS
+    '개강일자';
+
+COMMENT ON COLUMN subject.end_date IS
+    '종강일자';
+
+ALTER TABLE subject ADD CONSTRAINT subject_pk PRIMARY KEY ( subject_code );
+
+ALTER TABLE course
+    ADD CONSTRAINT course_student_fk FOREIGN KEY ( student_code )
+        REFERENCES student ( student_code );
+
+ALTER TABLE course
+    ADD CONSTRAINT course_subject_fk FOREIGN KEY ( subject_code )
+        REFERENCES subject ( subject_code );
+
+ALTER TABLE professor
+    ADD CONSTRAINT professor_fk FOREIGN KEY ( department_code )
+        REFERENCES department ( department_code );
+
+ALTER TABLE subject
+    ADD CONSTRAINT subject_fk FOREIGN KEY ( professor_code )
+        REFERENCES professor ( professor_code );
+        
+        
+        
+        CREATE TABLE student (
+    student_code     VARCHAR2(50 CHAR) NOT NULL,
+    student_name     VARCHAR2(30 CHAR) NOT NULL,
+    department_code  VARCHAR2(50 CHAR) NOT NULL
+);
+
+COMMENT ON COLUMN student.student_code IS
+    '학번';
+
+COMMENT ON COLUMN student.student_name IS
+    '학생이름';
+
+ALTER TABLE student ADD CONSTRAINT student_pk PRIMARY KEY ( student_code );
+
+ALTER TABLE student
+    ADD CONSTRAINT student_fk FOREIGN KEY ( department_code )
+        REFERENCES department ( department_code );
+        
