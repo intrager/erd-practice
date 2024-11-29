@@ -25,7 +25,7 @@ public class CommerceDAO {
 
     public List<Product> getProductList() {
         SqlSession session = sqlSessionFactory.openSession();
-        List<Product> list = session.selectList("productList");
+        List<Product> list = session.selectList("getProductList");
         session.close();
         return list;
     }

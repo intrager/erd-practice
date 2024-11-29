@@ -8,4 +8,24 @@ public class Orders {
     private LocalDate ordersDatetime;
     private Customer customerId;
     private Product productCode;
+
+    public String getOrdersCode() {
+        return ordersCode;
+    }
+
+    public int getPurchaseQuantity() {
+        return purchaseQuantity;
+    }
+
+    public LocalDate getOrdersDatetime() {
+        return ordersDatetime;
+    }
+
+    public Customer getCustomerId() {
+        return customerId;
+    }
+
+    public Product getProductCode() {
+        return productCode;
+    }
 }
