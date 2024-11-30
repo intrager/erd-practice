@@ -16,6 +16,7 @@
             </dataSource>
         </environment>
     </environments>
+
     <mappers>
         <mapper resource="/mapper/ShoppingMapper.xml" />
     </mappers>
