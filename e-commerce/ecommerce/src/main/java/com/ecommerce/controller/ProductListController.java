@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
 
-@WebServlet("/list")
+@WebServlet("/productList")
 public class ProductListController extends HttpServlet {
     @Override
     protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -20,7 +20,7 @@ public class ProductListController extends HttpServlet {
         List<Product> list = dao.getProductList();
         req.setAttribute("list", list);
         // forward
-        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/views/list.jsp");
+        RequestDispatcher rd = req.getRequestDispatcher("/WEB-INF/views/productList.jsp");
         rd.forward(req, resp);
     }
 }

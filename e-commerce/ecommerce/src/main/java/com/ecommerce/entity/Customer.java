@@ -12,6 +12,11 @@ public class Customer {
     private long savings;
     private LocalDate registerDate;
 
+    public Customer(String customerId, String password) {
+        this.customerId = customerId;
+        this.password = password;
+    }
+
     public String getCustomerId() {
         return customerId;
     }

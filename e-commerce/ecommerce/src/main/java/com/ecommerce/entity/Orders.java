@@ -6,8 +6,14 @@ public class Orders {
     private String ordersCode;
     private int purchaseQuantity;
     private LocalDate ordersDatetime;
-    private Customer customerId;
-    private Product productCode;
+    private String customerId;
+    private String productCode;
+
+    public Orders(String ordersCode, String customerId, String productCode) {
+        this.ordersCode = ordersCode;
+        this.customerId = customerId;
+        this.productCode = productCode;
+    }
 
     public String getOrdersCode() {
         return ordersCode;
@@ -21,11 +27,11 @@ public class Orders {
         return ordersDatetime;
     }
 
-    public Customer getCustomerId() {
+    public String getCustomerId() {
         return customerId;
     }
 
-    public Product getProductCode() {
+    public String getProductCode() {
         return productCode;
     }
 }
