@@ -53,7 +53,7 @@ public class CommerceDAO {
             Cart cartItem = new Cart(ordersCode, customerId, productCode, existingPurchaseQuantity);
             successCount = session.insert("addProductToCart", cartItem);
         } else {
-            Cart candidateCartItem = new Cart(customerId, productCode);
+            Cart candidateCartItem = new Cart(ordersCode, customerId, productCode);
             existingPurchaseQuantity = session.selectOne("getCountAlreadyAddedProductToCart", candidateCartItem);
             existingPurchaseQuantity++;
             Cart cartItem = new Cart(ordersCode, customerId, productCode, existingPurchaseQuantity);
@@ -77,5 +77,16 @@ public class CommerceDAO {
         List<Cart> cartList = session.selectList("getCartList", customerId);
         session.close();
         return cartList;
+    }
+
+    public int cancelProductInCart(String ordersCode, String customerId, String productCode) {
+        SqlSession session = sqlSessionFactory.openSession();
+        Cart productInfo = new Cart(ordersCode, customerId, productCode);
+        int canceled = session.update("cancelProductInCart", productInfo);
+        System.out.println(canceled);
+        session.commit();
+        session.close();
+
+        return canceled;
     }
 }

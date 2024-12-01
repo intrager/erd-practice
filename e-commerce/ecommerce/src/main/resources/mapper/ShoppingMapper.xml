@@ -74,6 +74,8 @@
         inner join product prod
                 on ord.product_code = prod.product_code
         where customer_id = #{customerId}
+          and orders_datetime is null
+          and cart_state = 1
     </select>
 
     <select id="getOrdersCode" parameterType="com.ecommerce.entity.Cart" resultType="string">
@@ -86,11 +88,20 @@
     </select>
 
     <select id="getCountAlreadyAddedProductToCart" parameterType="com.ecommerce.entity.Cart" resultType="integer">
-        select sum(purchase_quantity)
+        select purchase_quantity
         from orders
         where customer_id = #{customerId}
           and product_code = #{productCode}
           and orders_datetime is null
           and cart_state = 1
     </select>
+
+    <update id="cancelProductInCart" parameterType="com.ecommerce.entity.Cart">
+        update orders
+        set cart_state = 4
+        where orders_code = #{ordersCode}
+          and customer_id = #{customerId}
+          and product_code = #{productCode}
+          and cart_state = 1
+    </update>
 </mapper>

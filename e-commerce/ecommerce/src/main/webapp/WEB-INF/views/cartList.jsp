@@ -71,7 +71,7 @@
                   <td>${item.purchaseQuantity}</td>
                   <td>${item.productPrice}</td>
                   <td>${item.productAmountPrice}</td>
-                  <td class="text-center"><button class="btn btn-smg badge-secondary" onclick="cancel('${item.ordersCode}')">빼기</button></td>
+                  <td class="text-center"><button class="btn btn-smg badge-secondary" onclick="cancel('${item.ordersCode}', '${item.productCode}')">빼기</button></td>
                 </tr>
               </c:forEach>
               <tr>
@@ -86,9 +86,23 @@
     </div>
   </div>
   <script>
-    function cancel(ordersCode) {
+    function cancel(ordersCode, productCode) {
       $.ajax({
-
+        url: "/ecommerce/cancelProduct",
+        data: JSON.stringify({"ordersCode": ordersCode, "customerId": "<c:out value='${loginInfo.customerId}' />", "productCode": productCode}),
+        contentType: "application/json",
+        type: "POST",
+        success: function(result) {
+          if(result === "false") {
+            alert("물건을 취소하는 데 문제가 발생했습니다. 다시 시도해주세요.");
+          } else {
+            alert("정상적으로 취소되었습니다.");
+          }
+          location.href="/ecommerce/cartList";
+        },
+        error: function() {
+          alert("물건을 취소하는 데 문제가 발생했습니다. 다시 시도해주세요.");
+        }
       });
     }
   </script>

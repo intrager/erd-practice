@@ -31,8 +31,7 @@ public class CartListController extends HttpServlet {
         }
         req.setAttribute("totalAmount", totalAmount);
         req.setAttribute("cartList", cartList);
-        //        req.setAttribute("");
-        // forward
+
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/cartList.jsp");
         dispatcher.forward(req, resp);
     }

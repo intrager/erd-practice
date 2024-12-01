@@ -17,6 +17,12 @@ public class Cart {
         this.productCode = productCode;
     }
 
+    public Cart(String ordersCode, String customerId, String productCode) {
+        this.ordersCode = ordersCode;
+        this.customerId = customerId;
+        this.productCode = productCode;
+    }
+
     public Cart(String ordersCode, String customerId, String productCode, int purchaseQuantity) {
         this.ordersCode = ordersCode;
         this.customerId = customerId;

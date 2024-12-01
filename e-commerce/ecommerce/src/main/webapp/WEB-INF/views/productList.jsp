@@ -101,6 +101,7 @@
         contentType: "application/json",
         type: "POST",
         success: function(count) {
+          console.log(count);
           if(count === 0) {
             alert("장바구니에 담기지 않았어요. 다시 시도해 주세요."); return false;
           }
