@@ -70,10 +70,14 @@
                   <td>${item.productName}</td>
                   <td>${item.purchaseQuantity}</td>
                   <td>${item.productPrice}</td>
-                  <td>${item.orderAmountPrice}</td>
-                  <td class="text-center"><button class="btn btn-smg badge-secondary" onclick="addToCart('${item.productCode}')">빼기</button></td>
+                  <td>${item.productAmountPrice}</td>
+                  <td class="text-center"><button class="btn btn-smg badge-secondary" onclick="cancel('${item.ordersCode}')">빼기</button></td>
                 </tr>
               </c:forEach>
+              <tr>
+                <td colspan="4">주문할 총 금액</td>
+                <td colspan="2"><span class="badge badge-danger">${totalAmount}</span></td>
+              </tr>
             </tbody>
           </tr>
         </table>
@@ -82,7 +86,11 @@
     </div>
   </div>
   <script>
+    function cancel(ordersCode) {
+      $.ajax({
 
+      });
+    }
   </script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>

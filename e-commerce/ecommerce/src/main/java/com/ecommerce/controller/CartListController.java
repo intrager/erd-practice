@@ -25,8 +25,13 @@ public class CartListController extends HttpServlet {
         String customerId = loginInfo.getCustomerId();
         CommerceDAO dao = new CommerceDAO();
         List<Cart> cartList = dao.getCartList(customerId);
+        long totalAmount = 0;
+        for(Cart cart : cartList) {
+            totalAmount += cart.getProductAmountPrice();
+        }
+        req.setAttribute("totalAmount", totalAmount);
         req.setAttribute("cartList", cartList);
-
+        //        req.setAttribute("");
         // forward
         RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/views/cartList.jsp");
         dispatcher.forward(req, resp);

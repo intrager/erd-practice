@@ -1,9 +1,9 @@
 package com.ecommerce.repository;
 
 import com.ecommerce.entity.Cart;
-import com.ecommerce.entity.Orders;
 import com.ecommerce.entity.Customer;
 import com.ecommerce.entity.Product;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -42,21 +42,34 @@ public class CommerceDAO {
 
     public int addProductToCart(String customerId, String productCode) {
         SqlSession session = sqlSessionFactory.openSession();
-        String ordersCode = session.selectOne("findMaxNumber");
-        String collectedOrdersCode = countToMax(ordersCode);
+        Cart idAndProductCode = new Cart(customerId, productCode);
 
-        Orders cartItem = new Orders(collectedOrdersCode, customerId, productCode);
+        String ordersCode = session.selectOne("getOrdersCode", idAndProductCode);
+        int existingPurchaseQuantity = 1;
+        int successCount = 0;
+        if(StringUtils.equals(ordersCode, null)) {
+            String existingMaxOrdersCode = session.selectOne("findMaxNumber");
+            ordersCode = collectToMax(existingMaxOrdersCode);
+            Cart cartItem = new Cart(ordersCode, customerId, productCode, existingPurchaseQuantity);
+            successCount = session.insert("addProductToCart", cartItem);
+        } else {
+            Cart candidateCartItem = new Cart(customerId, productCode);
+            existingPurchaseQuantity = session.selectOne("getCountAlreadyAddedProductToCart", candidateCartItem);
+            existingPurchaseQuantity++;
+            Cart cartItem = new Cart(ordersCode, customerId, productCode, existingPurchaseQuantity);
+            successCount = session.update("updateQuantityAlreadyExists", cartItem);
+        }
 
-        int successCount = session.insert("addProductToCart", cartItem);
         session.commit();
         session.close();
         return successCount;
     }
 
-    private String countToMax(String ordersCode) {
-        String domainCode = ordersCode.substring(4).replace("[0-9]", "");
+    private String collectToMax(String ordersCode) {
+        String year = ordersCode.substring(0, 4);
+        String domainCode = ordersCode.substring(4).replaceAll("[0-9]", "");
         long temporaryCount = Long.parseLong(ordersCode.substring(4).replaceAll("[A-z]", "")) + 1;
-        return domainCode + temporaryCount;
+        return year + domainCode + temporaryCount;
     }
 
     public List<Cart> getCartList(String customerId) {

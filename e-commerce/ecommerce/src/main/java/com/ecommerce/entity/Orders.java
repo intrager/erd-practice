@@ -1,19 +1,13 @@
 package com.ecommerce.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Orders {
     private String ordersCode;
     private int purchaseQuantity;
-    private LocalDate ordersDatetime;
+    private LocalDateTime ordersDatetime;
     private String customerId;
     private String productCode;
-
-    public Orders(String ordersCode, String customerId, String productCode) {
-        this.ordersCode = ordersCode;
-        this.customerId = customerId;
-        this.productCode = productCode;
-    }
 
     public String getOrdersCode() {
         return ordersCode;
@@ -23,7 +17,7 @@ public class Orders {
         return purchaseQuantity;
     }
 
-    public LocalDate getOrdersDatetime() {
+    public LocalDateTime getOrdersDatetime() {
         return ordersDatetime;
     }
 

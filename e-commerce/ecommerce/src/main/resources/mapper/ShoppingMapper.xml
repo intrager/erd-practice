@@ -29,30 +29,37 @@
           and password = #{password}
     </select>
 
-    <select id="findMaxNumber" resultType="long">
+    <select id="findMaxNumber" resultType="string">
         select orders_code
         from orders
         where rownum = 1
         order by orders_code desc
     </select>
 
-    <insert id="addProductToCart" parameterType="com.ecommerce.entity.Orders">
+    <insert id="addProductToCart" parameterType="com.ecommerce.entity.Cart">
         insert into orders (
             orders_code
-          , customerId
+          , customer_id
           , product_code
           , purchase_quantity
-          , orders_datetime
           , cart_state
         ) values (
             #{ordersCode}
           , #{customerId}
           , #{productCode}
-          , 1
-          , sysdate
+          , #{purchaseQuantity}
           , 1
         )
     </insert>
+
+    <update id="updateQuantityAlreadyExists" parameterType="com.ecommerce.entity.Cart">
+        update orders
+        set purchase_quantity = #{purchaseQuantity}
+        where orders_code = #{ordersCode}
+          and customer_id = #{customerId}
+          and product_code = #{productCode}
+          and cart_state = 1
+    </update>
 
     <select id="getCartList" parameterType="string" resultType="com.ecommerce.entity.Cart">
         select
@@ -67,5 +74,23 @@
         inner join product prod
                 on ord.product_code = prod.product_code
         where customer_id = #{customerId}
+    </select>
+
+    <select id="getOrdersCode" parameterType="com.ecommerce.entity.Cart" resultType="string">
+        select orders_code
+        from orders
+        where customer_id = #{customerId}
+          and product_code = #{productCode}
+          and orders_datetime is null
+          and cart_state = 1
+    </select>
+
+    <select id="getCountAlreadyAddedProductToCart" parameterType="com.ecommerce.entity.Cart" resultType="integer">
+        select sum(purchase_quantity)
+        from orders
+        where customer_id = #{customerId}
+          and product_code = #{productCode}
+          and orders_datetime is null
+          and cart_state = 1
     </select>
 </mapper>
