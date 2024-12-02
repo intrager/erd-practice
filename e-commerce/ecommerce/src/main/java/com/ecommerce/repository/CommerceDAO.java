@@ -2,7 +2,9 @@ package com.ecommerce.repository;
 
 import com.ecommerce.entity.Cart;
 import com.ecommerce.entity.Customer;
+import com.ecommerce.entity.Orders;
 import com.ecommerce.entity.Product;
+import com.sun.org.apache.xpath.internal.operations.Or;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
@@ -83,10 +85,23 @@ public class CommerceDAO {
         SqlSession session = sqlSessionFactory.openSession();
         Cart productInfo = new Cart(ordersCode, customerId, productCode);
         int canceled = session.update("cancelProductInCart", productInfo);
-        System.out.println(canceled);
+
         session.commit();
         session.close();
 
         return canceled;
+    }
+
+    public boolean orders(String customerId, int cartSize, long totalAmount) {
+        SqlSession session = sqlSessionFactory.openSession();
+        int orderPlaced = session.update("orders", customerId);
+        long savingsAfterOrders = Math.round(totalAmount * 0.05);
+        session.commit();
+        Customer savingInfo = new Customer(customerId, savingsAfterOrders);
+        int accumulateResult = session.update("accumulateAfterOrders", savingInfo);
+
+        session.commit();
+        session.close();
+        return (orderPlaced == cartSize) && (accumulateResult == 1);
     }
 }

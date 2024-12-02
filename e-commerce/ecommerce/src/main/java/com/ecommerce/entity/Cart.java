@@ -1,6 +1,6 @@
 package com.ecommerce.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Cart {
     private String ordersCode;
@@ -10,7 +10,7 @@ public class Cart {
     private long productPrice;
     private int purchaseQuantity;
     private long productAmountPrice;
-    private LocalDate ordersDatetime;
+    private LocalDateTime ordersDatetime;
 
     public Cart(String customerId, String productCode) {
         this.customerId = customerId;
@@ -30,7 +30,7 @@ public class Cart {
         this.purchaseQuantity = purchaseQuantity;
     }
 
-    public Cart(String ordersCode, String customerId, String productCode, String productName, long productPrice, int purchaseQuantity, LocalDate ordersDatetime) {
+    public Cart(String ordersCode, String customerId, String productCode, String productName, long productPrice, int purchaseQuantity, LocalDateTime ordersDatetime) {
         this.ordersCode = ordersCode;
         this.customerId = customerId;
         this.productCode = productCode;
@@ -68,7 +68,7 @@ public class Cart {
         return productPrice * purchaseQuantity;
     }
 
-    public LocalDate getOrdersDatetime() {
+    public LocalDateTime getOrdersDatetime() {
         return ordersDatetime;
     }
 }

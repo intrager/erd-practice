@@ -1,6 +1,6 @@
 package com.ecommerce.entity;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Customer {
     private String customerId;
@@ -10,11 +10,27 @@ public class Customer {
     private String job;
     private String grade;
     private long savings;
-    private LocalDate registerDate;
+    private LocalDateTime registerDate;
 
     public Customer(String customerId, String password) {
         this.customerId = customerId;
         this.password = password;
+    }
+
+    public Customer(String customerId, long savings) {
+        this.customerId = customerId;
+        this.savings = savings;
+    }
+
+    public Customer(String customerId, String customerName, String password, int age, String job, String grade, long savings, LocalDateTime registerDate) {
+        this.customerId = customerId;
+        this.customerName = customerName;
+        this.password = password;
+        this.age = age;
+        this.job = job;
+        this.grade = grade;
+        this.savings = savings;
+        this.registerDate = registerDate;
     }
 
     public String getCustomerId() {
@@ -45,7 +61,7 @@ public class Customer {
         return savings;
     }
 
-    public LocalDate getRegisterDate() {
+    public LocalDateTime getRegisterDate() {
         return registerDate;
     }
 }

@@ -71,7 +71,7 @@
                   <td>${product.stockQuantity}</td>
                   <td>${product.productPrice}</td>
                   <td>${product.manufacturer}</td>
-                  <td class="text-center"><button class="btn btn-small btn-primary" onclick="addToCart('${product.productCode}')">장바구니 추가하기</button></td>
+                  <td class="text-center"><button class="btn btn-small btn-primary" onclick="addToCart('<c:out value="${loginInfo.customerId}" />', '${product.productCode}')">장바구니 추가하기</button></td>
                 </tr>
               </c:forEach>
             </tbody>
@@ -90,18 +90,17 @@
       location.href="/ecommerce/cartList";
     }
 
-    function addToCart(product) {
+    function addToCart(customerId, productCode) {
       if(${empty loginInfo}) {
         alert("로그인 후 이용 바랍니다.");
         return false;
       }
       $.ajax({
         url: "/ecommerce/addProduct",
-        data: JSON.stringify({"customerId" : "<c:out value='${loginInfo.customerId}' />", "productCode" : product}),
+        data: JSON.stringify({"customerId" : customerId, "productCode" : productCode}),
         contentType: "application/json",
         type: "POST",
         success: function(count) {
-          console.log(count);
           if(count === 0) {
             alert("장바구니에 담기지 않았어요. 다시 시도해 주세요."); return false;
           }

@@ -31,9 +31,12 @@
 
     <select id="findMaxNumber" resultType="string">
         select orders_code
-        from orders
+        from (
+              select orders_code
+              from orders
+              order by length(orders_code) desc, orders_code desc
+             )
         where rownum = 1
-        order by orders_code desc
     </select>
 
     <insert id="addProductToCart" parameterType="com.ecommerce.entity.Cart">
@@ -58,6 +61,7 @@
         where orders_code = #{ordersCode}
           and customer_id = #{customerId}
           and product_code = #{productCode}
+          and orders_datetime is null
           and cart_state = 1
     </update>
 
@@ -102,6 +106,22 @@
         where orders_code = #{ordersCode}
           and customer_id = #{customerId}
           and product_code = #{productCode}
+          and orders_datetime is null
           and cart_state = 1
+    </update>
+
+    <update id="orders" parameterType="string">
+        update orders
+        set orders_datetime = sysdate
+          , cart_state = 3
+        where customer_id = #{customerId}
+          and orders_datetime is null
+          and cart_state = 1
+    </update>
+
+    <update id="accumulateAfterOrders" parameterType="com.ecommerce.entity.Customer">
+        update customer
+        set savings = savings + #{savings}
+        where customer_id = #{customerId}
     </update>
 </mapper>
