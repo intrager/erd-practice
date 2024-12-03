@@ -104,4 +104,15 @@ public class CommerceDAO {
         session.close();
         return (orderPlaced == cartSize) && (accumulateResult == 1);
     }
+
+    public int changeQuantity(String ordersCode, int purchaseQuantity) {
+        SqlSession session = sqlSessionFactory.openSession();
+
+        Cart quantityInfo = new Cart(ordersCode, purchaseQuantity);
+        int changedQuantity = session.update("changeQuantity", quantityInfo);
+
+        session.commit();
+        session.close();
+        return changedQuantity;
+    }
 }

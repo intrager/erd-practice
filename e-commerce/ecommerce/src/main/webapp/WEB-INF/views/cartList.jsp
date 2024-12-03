@@ -48,7 +48,7 @@
       </div>
       <div class="card-body">
         <div class="row">
-          <div class="col text-right"><button class="btn btn-sm btn-danger" onClick="">주문하기</button></div>
+          <div class="col text-right"><button class="btn btn-sm btn-danger" onClick="orders('<c:out value="${loginInfo.customerId}"/>', ${cartList.size()})">주문하기</button></div>
         </div>
         <h3>Cart List</h3>
         <table class="table table-bordered table-hover">
@@ -68,10 +68,12 @@
                 <tr>
                   <td>${item.productCode}</td>
                   <td>${item.productName}</td>
-                  <td>${item.purchaseQuantity}</td>
+                  <td>
+                    <label for="purchaseQuantity_${item.ordersCode}"></label>
+                    <input id="purchaseQuantity_${item.ordersCode}" name="purchaseQuantity" type="number" min="1" max="5" class="form-control" value="${item.purchaseQuantity}" onchange="changeQuantity('${item.ordersCode}')"/></td>
                   <td>${item.productPrice}</td>
                   <td>${item.productAmountPrice}</td>
-                  <td class="text-center"><button class="btn btn-smg badge-secondary" onclick="cancel('${item.ordersCode}', '${item.productCode}')">빼기</button></td>
+                  <td class="text-center"><button class="btn btn-smg badge-secondary" onclick="cancel('${item.ordersCode}', '<c:out value="${loginInfo.customerId}" />', '${item.productCode}')">빼기</button></td>
                 </tr>
               </c:forEach>
               <tr>
@@ -81,19 +83,22 @@
             </tbody>
           </tr>
         </table>
+        <div class="row">
+          <div class="col text-right"><button class="btn btn-sm btn-primary" onclick="location.href='/ecommerce/productList'">쇼핑 계속하기</button></div>
+        </div>
       </div>
       <div class="card-footer text-center">데이터베이스 모델링_브루스한</div>
     </div>
   </div>
   <script>
-    function cancel(ordersCode, productCode) {
+    function cancel(ordersCode, customerId, productCode) {
       $.ajax({
         url: "/ecommerce/cancelProduct",
-        data: JSON.stringify({"ordersCode": ordersCode, "customerId": "<c:out value='${loginInfo.customerId}' />", "productCode": productCode}),
+        data: JSON.stringify({"ordersCode": ordersCode, "customerId": customerId, "productCode": productCode}),
         contentType: "application/json",
         type: "POST",
-        success: function(result) {
-          if(result === "false") {
+        success: function(resultState) {
+          if(resultState === "false") {
             alert("물건을 취소하는 데 문제가 발생했습니다. 다시 시도해주세요.");
           } else {
             alert("정상적으로 취소되었습니다.");
@@ -102,6 +107,49 @@
         },
         error: function() {
           alert("물건을 취소하는 데 문제가 발생했습니다. 다시 시도해주세요.");
+        }
+      });
+    }
+
+    function orders(customerId, cartSize) {
+      if(cartSize === 0 || ${totalAmount} === 0) {
+        alert("장바구니가 비었습니다.");
+        return false;
+      }
+      $.ajax({
+        url: "/ecommerce/orders",
+        data: JSON.stringify({ "customerId": customerId, "cartSize": cartSize, "totalAmount": ${totalAmount} }),
+        contentType: "application/json",
+        type: "POST",
+        success: function(resultState) {
+          if(resultState === "false") {
+            alert("주문에 실패했습니다. 다시 시도해주세요."); return false;
+          }
+          alert("주문이 완료됐습니다.");
+          location.href="/ecommerce/cartList";
+        },
+        error: function() {
+          alert("주문에 실패했습니다. 다시 시도해주세요."); return false;
+        }
+      });
+    }
+
+    function changeQuantity(ordersCode) {
+      const purchaseQuantity = document.getElementById('purchaseQuantity_' + ordersCode).value;
+      $.ajax({
+        url: "/ecommerce/quantityChange",
+        data: JSON.stringify({ "ordersCode": ordersCode, "purchaseQuantity": purchaseQuantity}),
+        contentType: "application/json",
+        type: "POST",
+        success: function(resultState) {
+          if(resultState === "false") {
+            alert("다시 시도해주세요."); return false;
+          }
+          alert("물품 개수가 추가되었습니다.");
+          location.href="/ecommerce/cartList";
+        },
+        error: function() {
+          alert("다시 시도해주세요."); return false;
         }
       });
     }

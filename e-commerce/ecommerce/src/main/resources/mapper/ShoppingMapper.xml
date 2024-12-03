@@ -124,4 +124,10 @@
         set savings = savings + #{savings}
         where customer_id = #{customerId}
     </update>
+
+    <update id="changeQuantity" parameterType="com.ecommerce.entity.Cart">
+        update orders
+        set purchase_quantity = #{purchaseQuantity}
+        where orders_code = #{ordersCode}
+    </update>
 </mapper>
