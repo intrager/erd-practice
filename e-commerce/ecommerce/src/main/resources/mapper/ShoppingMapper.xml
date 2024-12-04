@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="mapper.ShoppingMapper">
+    <select id="getProductList" resultType="com.ecommerce.entity.Product">
+        select
+            product_code
+          , product_name
+          , stock_quantity
+          , product_price
+          , manufacturer
+        from product
+        order by product_name
+    </select>
+
+    <select id="login" parameterType="com.ecommerce.entity.Customer" resultType="com.ecommerce.entity.Customer">
+        select
+            customer_id
+          , customer_name
+          , password
+          , age
+          , job
+          , grade
+          , savings
+          , register_date
+        from customer
+        where customer_id = #{customerId}
+          and password = #{password}
+    </select>
+
+    <select id="findMaxNumber" resultType="string">
+        select orders_code
+        from (
+              select orders_code
+              from orders
+              order by length(orders_code) desc, orders_code desc
+             )
+        where rownum = 1
+    </select>
+
+    <insert id="addProductToCart" parameterType="com.ecommerce.entity.Cart">
+        insert into orders (
+            orders_code
+          , customer_id
+          , product_code
+          , purchase_quantity
+          , cart_state
+        ) values (
+            #{ordersCode}
+          , #{customerId}
+          , #{productCode}
+          , #{purchaseQuantity}
+          , 1
+        )
+    </insert>
+
+    <update id="updateQuantityAlreadyExists" parameterType="com.ecommerce.entity.Cart">
+        update orders
+        set purchase_quantity = #{purchaseQuantity}
+        where orders_code = #{ordersCode}
+          and customer_id = #{customerId}
+          and product_code = #{productCode}
+          and orders_datetime is null
+          and cart_state = 1
+    </update>
+
+    <select id="getCartList" parameterType="string" resultType="com.ecommerce.entity.Cart">
+        select
+            ord.orders_code
+          , ord.customer_id
+          , prod.product_code
+          , prod.product_name
+          , prod.product_price
+          , ord.purchase_quantity
+          , ord.orders_datetime
+        from orders ord
+        inner join product prod
+                on ord.product_code = prod.product_code
+        where customer_id = #{customerId}
+          and orders_datetime is null
+          and cart_state = 1
+    </select>
+
+    <select id="getOrdersCode" parameterType="com.ecommerce.entity.Cart" resultType="string">
+        select orders_code
+        from orders
+        where customer_id = #{customerId}
+          and product_code = #{productCode}
+          and orders_datetime is null
+          and cart_state = 1
+    </select>
+
+    <select id="getCountAlreadyAddedProductToCart" parameterType="com.ecommerce.entity.Cart" resultType="integer">
+        select purchase_quantity
+        from orders
+        where customer_id = #{customerId}
+          and product_code = #{productCode}
+          and orders_datetime is null
+          and cart_state = 1
+    </select>
+
+    <update id="cancelProductInCart" parameterType="com.ecommerce.entity.Cart">
+        update orders
+        set cart_state = 4
+        where orders_code = #{ordersCode}
+          and customer_id = #{customerId}
+          and product_code = #{productCode}
+          and orders_datetime is null
+          and cart_state = 1
+    </update>
+
+    <update id="orders" parameterType="string">
+        update orders
+        set orders_datetime = sysdate
+          , cart_state = 3
+        where customer_id = #{customerId}
+          and orders_datetime is null
+          and cart_state = 1
+    </update>
+
+    <update id="accumulateAfterOrders" parameterType="com.ecommerce.entity.Customer">
+        update customer
+        set savings = savings + #{savings}
+        where customer_id = #{customerId}
+    </update>
+
+    <update id="changeQuantity" parameterType="com.ecommerce.entity.Cart">
+        update orders
+        set purchase_quantity = #{purchaseQuantity}
+        where orders_code = #{ordersCode}
+    </update>
+</mapper>
